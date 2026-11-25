@@ -3,11 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home Page</title>
+  <title>User Card</title>
   <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <header class="top-nav">
+    <a href="#" class="nav-link">Home</a>
+    <a href="#" class="nav-link">Ask Gemini</a>
+  </header>
+
+  <main class="page-content">
+    <div class="user-card">
+      <img
+        id="user-avatar"
+        src="john-doe.png"
+        alt="User avatar"
+        class="avatar"
+      />
+      <div class="card-body">
+        <h2 id="user-name" class="user-name">John Doe</h2>
+        <p id="user-gender" class="user-gender">Male</p>
+
+        <div class="actions">
+          <button type="button" class="btn btn-toggle" onclick="toggleUser()">
+            Toggle User
+          </button>
+          <button type="button" class="btn btn-random" onclick="randomUser()">
+            Random User
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script src="index.js"></script>
 </body>

@@ -1,3 +1,109 @@
-h1 {
-    color: blue;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: #f6e7cf;
+  color: #111111;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #111111;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #222222;
+  font-size: 15px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.page-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 16px;
+}
+
+.user-card {
+  width: 300px;
+  background-color: #ffffff;
+  border: 1.5px solid #111111;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.avatar {
+  display: block;
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 18px 24px 24px;
+}
+
+.user-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.user-gender {
+  font-size: 15px;
+  color: #222222;
+  margin-bottom: 18px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn {
+  width: 200px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1.5px solid #222222;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-toggle {
+  background-color: #d6a76c;
+  color: #111111;
+}
+
+.btn-toggle:hover {
+  background-color: #c8975b;
+}
+
+.btn-random {
+  background-color: #e5e5e5;
+  color: #111111;
+}
+
+.btn-random:hover {
+  background-color: #d8d8d8;
 }
