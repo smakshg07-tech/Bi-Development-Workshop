@@ -35,28 +35,40 @@ function toggleUser() {
   renderUser(currentIndex);
 }
 
-function randomUser() {
-  fetch("https://randomuser.me/api")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Request failed: " + response.status);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const person = data.results[0];
-      const fullName = `${person.name.first} ${person.name.last}`;
-      const gender = person.gender;
+async function randomUser() {
+  const button = document.querySelector(".btn-random");
 
-      document.getElementById("user-name").textContent = fullName;
-      document.getElementById("user-gender").textContent = gender;
-      document.getElementById("user-avatar").src = person.picture.large;
-      document.getElementById("user-avatar").alt = `${fullName} avatar`;
-    })
-    .catch((error) => {
-      console.error("Could not load random user:", error);
-      alert("Could not load a random user. Please try again.");
-    });
+  button.disabled = true;
+  button.textContent = "Loading...";
+
+  try {
+    const response = await fetch("https://randomuser.me/api");
+
+    if (!response.ok) {
+      throw new Error("Request failed: " + response.status);
+    }
+
+    const data = await response.json();
+    const person = data.results[0];
+
+    const newUser = {
+      name: `${person.name.first} ${person.name.last}`,
+      gender: person.gender,
+      avatar: person.picture.large
+    };
+
+    users.push(newUser);
+    currentIndex = users.length - 1;
+
+    renderUser(currentIndex);
+
+  } catch (error) {
+    console.error("Could not load random user:", error);
+    alert("Could not load a random user. Please try again.");
+  } finally {
+    button.disabled = false;
+    button.textContent = "Random User";
+  }
 }
 
 // Page load hote hi pehla user dikhane ke liye:

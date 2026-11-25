@@ -84,6 +84,12 @@
 
 <h1>Ask<span>Gemini</span></h1>
 <p id="tagline">A streaming LLM client in one HTML file — no frameworks, no backend.</p>
+<p style="margin-bottom: 25px;">
+  <a href="./index.html"
+     style="color:#c49a32; text-decoration:none; font-weight:600;">
+    ← Back to Home
+  </a>
+</p>
 
 <div id="ask">
   <textarea id="prompt" rows="2" placeholder="Ask Gemini anything…"></textarea>
@@ -110,7 +116,7 @@
 <script>
 const $ = id => document.getElementById(id);
 
-const MODEL = "gemini-3.5-flash-lite";
+const MODEL = "gemini-3.8-flash";
 const URL = key =>
   `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:streamGenerateContent?alt=sse&key=${key}`;
 
