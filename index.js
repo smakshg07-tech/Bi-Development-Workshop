@@ -27,13 +27,25 @@ function toggleUser() {
 }
 
 function randomUser() {
-  if (users.length <= 1) return;
+  fetch("https://randomuser.me/api")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Request failed: " + response.status);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const person = data.results[0];
+      const fullName = `${person.name.first} ${person.name.last}`;
+      const gender = person.gender;
 
-  let nextIndex = Math.floor(Math.random() * users.length);
-  if (nextIndex === currentIndex) {
-    nextIndex = (currentIndex + 1) % users.length;
-  }
-
-  currentIndex = nextIndex;
-  renderUser(currentIndex);
+      document.getElementById("user-name").textContent = fullName;
+      document.getElementById("user-gender").textContent = gender;
+      document.getElementById("user-avatar").src = person.picture.large;
+      document.getElementById("user-avatar").alt = `${fullName} avatar`;
+    })
+    .catch((error) => {
+      console.error("Could not load random user:", error);
+      alert("Could not load a random user. Please try again.");
+    });
 }
