@@ -2,12 +2,12 @@ const users = [
   {
     name: "John Doe",
     gender: "Male",
-    avatar: "john-doe.png"
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg"
   },
   {
     name: "Jane Doe",
     gender: "Female",
-    avatar: "jane-doe.png"
+    avatar: "https://randomuser.me/api/portraits/women/1.jpg"
   }
 ];
 
@@ -15,10 +15,19 @@ let currentIndex = 0;
 
 function renderUser(index) {
   const user = users[index];
-  document.getElementById("user-name").textContent = user.name;
-  document.getElementById("user-gender").textContent = user.gender;
-  document.getElementById("user-avatar").src = user.avatar;
-  document.getElementById("user-avatar").alt = `${user.name} avatar`;
+  const nameEl = document.getElementById("user-name");
+  const genderEl = document.getElementById("user-gender");
+  const avatarEl = document.getElementById("user-avatar");
+
+  if (nameEl) nameEl.textContent = user.name;
+  if (genderEl) genderEl.textContent = user.gender;
+  if (avatarEl) {
+    avatarEl.src = user.avatar;
+    avatarEl.alt = `${user.name} avatar`;
+    avatarEl.onerror = () => {
+      avatarEl.src = "https://via.placeholder.com/150?text=No+Image";
+    };
+  }
 }
 
 function toggleUser() {
@@ -49,3 +58,6 @@ function randomUser() {
       alert("Could not load a random user. Please try again.");
     });
 }
+
+// Page load hote hi pehla user dikhane ke liye:
+renderUser(currentIndex);
